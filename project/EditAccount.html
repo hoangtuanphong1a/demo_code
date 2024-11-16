@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa tài khoản</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+<div class="max-w-4xl mx-auto py-10">
+    <h2 class="text-2xl font-bold mb-6 text-center">Chỉnh sửa thông tin</h2>
+
+    <!-- Profile Picture Upload -->
+    <div class="flex items-center justify-center mb-8">
+        <div class="relative">
+            <img id="previewAvatar" src="" alt="Avatar" class="w-32 h-32 rounded-full object-cover border-4 border-indigo-500">
+            <input type="file" id="uploadAvatar" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer" onchange="changeAvatar(event)">
+        </div>
+    </div>
+
+    <!-- Account Form -->
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+            <label for="username" class="block text-gray-700 font-bold mb-2">Tên người dùng</label>
+            <input type="text" id="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
+        </div>
+        
+        <div class="mb-4">
+            <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+            <input type="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
+        </div>
+        
+        <div class="mb-4">
+            <label for="phone" class="block text-gray-700 font-bold mb-2">Số điện thoại</label>
+            <input type="tel" id="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
+        </div>
+
+        <div class="flex items-center justify-between">
+            <button type="button" onclick="saveChanges()" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Lưu thay đổi</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Load existing data when opening EditAccount page
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("username").value = localStorage.getItem("username") || "";
+        document.getElementById("email").value = localStorage.getItem("email") || "";
+        document.getElementById("phone").value = localStorage.getItem("phone") || "";
+        document.getElementById("previewAvatar").src = localStorage.getItem("avatar") || "https://via.placeholder.com/150";
+    });
+
+    // Save changes to localStorage and navigate back
+    function saveChanges() {
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+
+        localStorage.setItem("username", username);
+        localStorage.setItem("email", email);
+        localStorage.setItem("phone", phone);
+
+        alert("Thông tin tài khoản đã được cập nhật!");
+        window.location.href = "AccountPage.html";
+    }
+
+    // Preview and save new avatar
+    function changeAvatar(event) {
+        const avatarURL = URL.createObjectURL(event.target.files[0]);
+        document.getElementById("previewAvatar").src = avatarURL;
+        localStorage.setItem("avatar", avatarURL);
+    }
+</script>
+
+</body>
+</html>

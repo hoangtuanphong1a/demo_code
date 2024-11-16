@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục sản phẩm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex-grow: 1;
+        }
+        footer {
+            margin-top: auto;
+        }
+        /* Đảm bảo tất cả sản phẩm có cùng kích thước */
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            overflow: hidden;
+            background-color: white;
+            max-width: 100%;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px; /* Chiều cao cố định cho tất cả hình ảnh */
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .product-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: #2b6cb0;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn {
+            background-color: #3182ce;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #2b6cb0;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .category-container {
+            margin-bottom: 2rem;
+        }
+    </style>
+
+<header class="bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="#" class="text-2xl font-bold text-indigo-600">E-Shop</a>
+            </div>
+
+            <!-- Navigation -->
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-center space-x-4">
+                    <a href="HomePage.html" class="text-gray-500 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Trang chủ</a>
+                    <a href="CategoryPage.html" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Danh mục</a>
+                </div>
+            </div>
+
+            <!-- Right buttons -->
+            <div class="flex items-center space-x-4">
+                <!-- Tìm kiếm -->
+                <a href="SearchPage.html">
+                    <button class="text-gray-500 hover:text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                </a>
+
+                <!-- Giỏ hàng -->
+                <a href="CartPage.html">
+                    <button class="text-gray-500 hover:text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                    </button>
+                </a>
+
+                <!-- Tài khoản với dropdown -->
+                <div class="relative">
+                    <button id="accountButton" class="text-gray-500 hover:text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="accountMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 border-4">
+                        <a href="AccountPage.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cá Nhân</a>
+                        <a href="SingupPage.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng ký</a>
+                        <a href="LoginPage.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng Nhập</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <div class="container mx-auto px-4 py-8 flex">
+        <aside class="w-1/4 pr-4">
+            <h2 class="text-xl font-semibold mb-4">Danh mục</h2>
+            
+            <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-2">Thiết bị</label>
+                <select id="categoryFilter" class="w-full border p-2 rounded">
+                    <option value="all">Tất cả</option>
+                    <option value="dien-thoai">Điện thoại</option>
+                    <option value="may-tinh-bang">Máy tính bảng</option>
+                    <option value="phu-kien">Phụ kiện</option>
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-2">Sắp xếp theo</label>
+                <select id="sortSelect" class="w-full border p-2 rounded">
+                    <option value="default">Mặc định</option>
+                    <option value="asc">Giá tăng dần</option>
+                    <option value="desc">Giá giảm dần</option>
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-2">Lọc giá</label>
+                <select id="priceFilter" class="w-full border p-2 rounded">
+                    <option value="all">Tất cả</option>
+                    <option value="below5">Dưới 5 triệu</option>
+                    <option value="5to10">5-10 triệu</option>
+                    <option value="above10">Trên 10 triệu</option>
+                </select>
+            </div>
+        </aside>
+
+        <div class="w-3/4">
+            <div id="productsGrid" class="flex flex-col">
+                <!-- Sản phẩm sẽ được thêm vào đây qua JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 py-8 mt-8">
+        <div class="container mx-auto text-center text-white">
+            <p>© 2024 E-Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const products = [
+            { id: 1, name: "Điện thoại A", price: 3000000, category: "dien-thoai", description: "Mô tả sản phẩm A", quantity: 0, image: "https://images.samsung.com/is/image/samsung/assets/vn/smartphones/galaxy-s24-ultra/buy/S24Ultra-Color-Titanium_Grey_PC_0527_final.jpg" },
+            { id: 2, name: "Điện thoại B", price: 7000000, category: "dien-thoai", description: "Mô tả sản phẩm B", quantity: 0, image: "https://images.samsung.com/is/image/samsung/p6pim/vn/2202/gallery/vn-galaxy-s22-s901-sm-s901eidgxxv-530762309?$650_519_PNG$" },
+            { id: 3, name: "Điện thoại C", price: 12000000, category: "dien-thoai", description: "Mô tả sản phẩm C", quantity: 0, image: "https://via.placeholder.com/400x300" },
+            { id: 4, name: "Máy tính bảng A", price: 4500000, category: "may-tinh-bang", description: "Mô tả sản phẩm D", quantity: 0, image: "https://via.placeholder.com/400x300" },
+            { id: 5, name: "Phụ kiện A", price: 5500000, category: "phu-kien", description: "Mô tả phụ kiện", quantity: 0, image: "https://via.placeholder.com/400x300" },
+        ];
+
+        const productsGrid = document.getElementById("productsGrid");
+
+        function renderProducts(productList) {
+            const groupedProducts = productList.reduce((acc, product) => {
+                if (!acc[product.category]) {
+                    acc[product.category] = [];
+                }
+                acc[product.category].push(product);
+                return acc;
+            }, {});
+
+            productsGrid.innerHTML = "";
+
+            for (const [category, categoryProducts] of Object.entries(groupedProducts)) {
+                const categoryContainer = document.createElement('div');
+                categoryContainer.classList.add('category-container');
+                
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.classList.add('category-title');
+                categoryTitle.innerText = category === 'dien-thoai' ? 'Điện thoại' : category === 'may-tinh-bang' ? 'Máy tính bảng' : 'Phụ kiện';
+                categoryContainer.appendChild(categoryTitle);
+
+                const productGrid = document.createElement('div');
+                productGrid.classList.add('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'gap-6');
+
+                categoryProducts.forEach(product => {
+                    const productCard = `
+                        <div class="product-card">
+                            <a href="ProductDetail.html?id=${product.id}">
+                                <img src="${product.image}" alt="${product.name}" class="product-image cursor-pointer" />
+                            </a>
+                            <div class="product-content">
+                                <h3 class="product-name">${product.name}</h3>
+                                <p class="product-description">${product.description}</p>
+                                <p class="product-price">${product.price.toLocaleString()}₫</p>
+                                <button class="add-to-cart-btn">Thêm vào giỏ</button>
+                            </div>
+                        </div>`;
+                    productGrid.innerHTML += productCard;
+                });
+
+                categoryContainer.appendChild(productGrid);
+                productsGrid.appendChild(categoryContainer);
+            }
+        }
+
+        function applyFiltersAndSort() {
+            let filteredProducts = products;
+
+            const categoryFilter = document.getElementById("categoryFilter").value;
+            if (categoryFilter !== "all") {
+                filteredProducts = filteredProducts.filter(product => product.category === categoryFilter);
+            }
+
+            const priceFilter = document.getElementById("priceFilter").value;
+            if (priceFilter === "below5") {
+                filteredProducts = filteredProducts.filter(product => product.price < 5000000);
+            } else if (priceFilter === "5to10") {
+                filteredProducts = filteredProducts.filter(product => product.price >= 5000000 && product.price <= 10000000);
+            } else if (priceFilter === "above10") {
+                filteredProducts = filteredProducts.filter(product => product.price > 10000000);
+            }
+
+            const sortSelect = document.getElementById("sortSelect").value;
+            if (sortSelect === "asc") {
+                filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
+            } else if (sortSelect === "desc") {
+                filteredProducts = filteredProducts.sort((a, b) => b.price - a.price);
+            }
+
+            renderProducts(filteredProducts);
+        }
+
+        document.getElementById("categoryFilter").addEventListener("change", applyFiltersAndSort);
+        document.getElementById("priceFilter").addEventListener("change", applyFiltersAndSort);
+        document.getElementById("sortSelect").addEventListener("change", applyFiltersAndSort);
+
+        renderProducts(products);
+    });
+    </script>
+</body>
+</html>

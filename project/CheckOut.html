@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Shop Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left Column - Checkout Form -->
+            <div>
+                <!-- Logo and Progress -->
+                <div class="mb-8">
+                    <div class="flex-shrink-0">
+                        <a href="#" class="text-2xl font-bold text-indigo-600">E-Shop</a>
+                    </div>
+                    <div class="flex items-center justify-center text-sm text-gray-500 space-x-2">
+                        <span>Information</span>
+                        <span>›</span>
+                        <span>Shipping</span>
+                        <span>›</span>
+                        <span>Payment</span>
+                    </div>
+                </div>
+
+                <!-- Express Checkout Buttons -->
+                <div class="bg-white shadow-md p-4 rounded-lg mb-8">
+                    <h2 class="text-xl text-gray-900 font-bold mb-4 text-center">Express checkout</h2>
+                    <div class="flex flex-wrap justify-center gap-4 w-full">
+                        <button class="bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700 min-w-[140px] sm:flex-1 transition-colors duration-200">
+                            Shop Pay
+                        </button>
+                        <button class="bg-yellow-500 text-black px-6 py-2 rounded-lg font-medium hover:bg-yellow-600 min-w-[140px] sm:flex-1 transition-colors duration-200">
+                            Amazon Pay
+                        </button>
+                        <button class="bg-black text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-800 min-w-[140px] sm:flex-1 transition-colors duration-200">
+                            Apple Pay
+                        </button>
+                        <button class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-medium hover:bg-yellow-500 min-w-[140px] sm:flex-1 transition-colors duration-200">
+                            PayPal
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="relative my-8">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-200"></div>
+                    </div>
+                    <div class="relative flex justify-center text-xs uppercase">
+                        <span class="bg-gray-50 px-4 text-gray-500">OR CONTINUE BELOW TO PAY WITH A CREDIT CARD</span>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-medium">Contact information</h2>
+                        <div class="text-sm">
+                            Already have an account? 
+                            <a href="#" class="text-gray-900 underline">Log in</a>
+                        </div>
+                    </div>
+                    
+                    <input type="email" placeholder="Email" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4"/>
+                    
+                    <label class="flex items-center space-x-2 text-sm text-gray-600">
+                        <input type="checkbox" class="rounded border-gray-300"/>
+                        <span>Email me with news and offers</span>
+                    </label>
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="mb-8">
+                    <h2 class="text-lg font-medium mb-4">Shipping address</h2>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <input type="text" placeholder="First name" class="border border-gray-300 rounded-md px-4 py-2"/>
+                        <input type="text" placeholder="Last name" class="border border-gray-300 rounded-md px-4 py-2"/>
+                    </div>
+                    
+                    <input type="text" placeholder="Company (required for business addresses)" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4"/>
+                    <input type="text" placeholder="Address" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4"/>
+                    <input type="text" placeholder="Apartment, suite, etc. (optional)" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4"/>
+                    <input type="text" placeholder="City" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4"/>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-4">
+                        <select class="border border-gray-300 rounded-md px-4 py-2">
+                            <option>United States</option>
+                            <option>VietNam</option>
+                            <option>ThaiLan</option>
+                        </select>
+                        <select class="border border-gray-300 rounded-md px-4 py-2">
+                            <option>State</option>
+                        </select>
+                        <input type="text" placeholder="ZIP code" class="border border-gray-300 rounded-md px-4 py-2"/>
+                    </div>
+                    
+                    <input type="tel" placeholder="Phone (optional)" class="w-full border border-gray-300 rounded-md px-4 py-2"/>
+                </div>
+
+                <!-- Continue Button -->
+                <a href="CategoryPage.html" class="w-full bg-black text-white py-4 rounded-md font-medium text-center block">
+                    CONTINUE TO SHIPPING
+                </a>
+            </div>
+
+            <!-- Right Column - Cart Summary -->
+        </head>
+        <body class="bg-gray-100">
+            <div class="container mx-auto p-6">
+                <div class="bg-gray-50 p-8 lg:sticky lg:top-0 lg:h-screen">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-lg font-medium mb-6">Order Summary</h2>
+                        
+                        <!-- Cart Items Container -->
+                        <div id="cartItems" class="space-y-4 mb-6">
+                            <!-- Cart items will be dynamically added here -->
+                        </div>
+        
+                        <!-- Discount Code -->
+                        <div class="flex space-x-2 mb-6">
+                            <input type="text" id="discountCode" placeholder="Discount code" 
+                                   class="flex-1 border border-gray-300 rounded-md px-4 py-2"/>
+                            <button onclick="applyDiscount()" 
+                                    class="bg-gray-200 text-gray-600 px-4 py-2 rounded-md hover:bg-gray-300 transition">
+                                    Apply
+                            </button>
+                        </div>
+        
+                        <!-- Summary -->
+                        <div class="border-t border-gray-200 pt-4 space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span>Subtotal</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div id="discountRow" class="flex justify-between text-sm text-green-600 hidden">
+                                <span>Discount</span>
+                                <span id="discountAmount">-$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Shipping</span>
+                                <span>Calculated at next step</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Taxes</span>
+                                <span>Calculated at next step</span>
+                            </div>
+                            <div class="flex justify-between font-medium text-lg pt-2 border-t">
+                                <span>Total</span>
+                                <span id="total">$0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div class="mt-6 border-t border-gray-200 pt-6">
+                            <h3 class="text-sm font-medium mb-4">Payment Method</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-center space-x-3">
+                                    <input type="radio" name="payment" value="card" checked
+                                           class="h-4 w-4 text-blue-600"/>
+                                    <span>Credit/Debit Card</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="radio" name="payment" value="paypal"
+                                           class="h-4 w-4 text-blue-600"/>
+                                    <span>PayPal</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="radio" name="payment" value="momo"
+                                           class="h-4 w-4 text-blue-600"/>
+                                    <span>Momo</span>
+                                </label>
+                            </div>
+
+                            <!-- Card Details (shown when card is selected) -->
+                            <div id="cardDetails" class="mt-4 space-y-4">
+                                <div>
+                                    <label class="block text-sm text-gray-700 mb-1">Card Number</label>
+                                    <input type="text" placeholder="1234 5678 9012 3456"
+                                           class="w-full border border-gray-300 rounded-md px-4 py-2"/>
+                                </div>
+                                <div class="flex space-x-4">
+                                    <div class="flex-1">
+                                        <label class="block text-sm text-gray-700 mb-1">Expiry Date</label>
+                                        <input type="text" placeholder="MM/YY"
+                                               class="w-full border border-gray-300 rounded-md px-4 py-2"/>
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="block text-sm text-gray-700 mb-1">CVC</label>
+                                        <input type="text" placeholder="123"
+                                               class="w-full border border-gray-300 rounded-md px-4 py-2"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Checkout Button -->
+                            <button onclick="processPayment()" 
+                                    class="w-full mt-6 bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition">
+                                    Proceed to Payment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Template for cart item -->
+            <template id="cartItemTemplate">
+                <div class="flex items-center space-x-4 cart-item">
+                    <div class="h-16 w-16 flex-shrink-0">
+                        <img class="w-full h-full object-cover rounded product-image" src="" alt="Product"/>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-sm font-medium product-name"></h3>
+                        <p class="text-sm text-gray-500 product-details"></p>
+                        <div class="flex items-center mt-1">
+                            <button onclick="updateQuantity(this, -1)" 
+                                    class="text-gray-500 hover:text-black w-6 h-6 flex items-center justify-center">
+                                    -
+                            </button>
+                            <span class="mx-2 text-sm product-quantity">1</span>
+                            <button onclick="updateQuantity(this, 1)" 
+                                    class="text-gray-500 hover:text-black w-6 h-6 flex items-center justify-center">
+                                    +
+                            </button>
+                            <button onclick="removeItem(this)" 
+                                    class="ml-4 text-red-500 hover:text-red-700">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                    </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-medium product-price"></p>
+                    </div>
+                </div>
+            </template>
+        
+            <script>
+                let cart = [];
+                let discountPercent = 0;
+        
+                // Load cart from localStorage when page loads
+                document.addEventListener('DOMContentLoaded', () => {
+                    loadCart();
+                    setupPaymentMethodToggle();
+                });
+        
+                function loadCart() {
+                    cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    updateCartDisplay();
+                }
+        
+                function saveCart() {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                }
+        
+                function updateCartDisplay() {
+                    const cartContainer = document.getElementById('cartItems');
+                    cartContainer.innerHTML = '';
+                    const template = document.getElementById('cartItemTemplate');
+        
+                    cart.forEach(item => {
+                        const clone = template.content.cloneNode(true);
+                        
+                        clone.querySelector('.product-image').src = item.image || '/api/placeholder/64/64';
+                        clone.querySelector('.product-name').textContent = item.name;
+                        clone.querySelector('.product-details').textContent = `Size: ${item.size} | Color: ${item.color}`;
+                        clone.querySelector('.product-quantity').textContent = item.quantity;
+                        clone.querySelector('.product-price').textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+                        
+                        const itemElement = clone.querySelector('.cart-item');
+                        itemElement.dataset.id = item.id;
+        
+                        cartContainer.appendChild(clone);
+                    });
+        
+                    updateTotals();
+                }
+        
+                function updateTotals() {
+                    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    const discount = subtotal * (discountPercent / 100);
+                    const total = subtotal - discount;
+        
+                    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+                    document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        
+                    if (discountPercent > 0) {
+                        document.getElementById('discountRow').classList.remove('hidden');
+                        document.getElementById('discountAmount').textContent = `-$${discount.toFixed(2)}`;
+                    } else {
+                        document.getElementById('discountRow').classList.add('hidden');
+                    }
+                }
+        
+                function updateQuantity(button, change) {
+                    const itemElement = button.closest('.cart-item');
+                    const itemId = itemElement.dataset.id;
+                    const item = cart.find(i => i.id === itemId);
+                    
+                    if (item) {
+                        item.quantity = Math.max(1, item.quantity + change);
+                        saveCart();
+                        updateCartDisplay();
+                    }
+                }
+        
+                function removeItem(button) {
+                    const itemElement = button.closest('.cart-item');
+                    const itemId = itemElement.dataset.id;
+                    cart = cart.filter(item => item.id !== itemId);
+                    saveCart();
+                    updateCartDisplay();
+                }
+        
+                function applyDiscount() {
+                    const code = document.getElementById('discountCode').value.toUpperCase();
+                    // Simple discount logic - you can modify based on your needs
+                    if (code === 'SAVE10') {
+                        discountPercent = 10;
+                    } else if (code === 'SAVE20') {
+                        discountPercent = 20;
+                    } else {
+                        alert('Invalid discount code');
+                        return;
+                    }
+                    updateTotals();
+                }
+        
+                function setupPaymentMethodToggle() {
+                    const cardDetails = document.getElementById('cardDetails');
+                    const paymentInputs = document.querySelectorAll('input[name="payment"]');
+                    
+                    paymentInputs.forEach(input => {
+                        input.addEventListener('change', (e) => {
+                            if (e.target.value === 'card') {
+                                cardDetails.classList.remove('hidden');
+                            } else {
+                                cardDetails.classList.add('hidden');
+                            }
+                        });
+                    });
+                }
+
+                function processPayment() {
+                    const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+                    const total = document.getElementById('total').textContent;
+                    
+                    // Here you would typically integrate with a payment gateway
+                    alert(`Processing ${total} payment via ${paymentMethod}`);
+                    // After successful payment, you might want to:
+                    // 1. Clear the cart
+                    // 2. Show success message
+                    // 3. Redirect to order confirmation page
+                }
+        
+                // Function to add item to cart (call this from CategoryPage)
+                function addToCart(product) {
+                    const existingItem = cart.find(item => item.id === product.id);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            image: product.image,
+                            size: product.size,
+                            color: product.color,
+                            quantity: 1
+                        });
+                    }
+                    
+                    saveCart();
+                    updateCartDisplay();
+                }
+            </script>
+        <!-- Footer Links -->
+        <div class="flex justify-start space-x-4 mt-8 text-sm text-gray-600">
+            <a href="#" class="hover:text-gray-900">Refund Policy</a>
+            <a href="#" class="hover:text-gray-900">Privacy Policy</a>
+            <a href="#" class="hover:text-gray-900">Terms of Service</a>
+        </div>
+    </div>
+</body>
+</html>
