@@ -1,199 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 Not Found</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --container-width: min(90%, 600px);
-      --heading-size: clamp(4rem, 15vw, 120px);
-      --text-size: clamp(1rem, 2vw, 1.2rem);
-      --image-size: clamp(180px, 40vw, 250px);
-      --button-padding: clamp(0.8rem, 2vw, 1rem) clamp(1.6rem, 4vw, 2rem);
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      min-height: 100dvh; /* For mobile browsers */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #2d3436;
-      padding: 1rem;
-    }
-
-    .container {
-      text-align: center;
-      padding: clamp(1rem, 4vw, 2rem);
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: clamp(10px, 3vw, 20px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px); /* For Safari */
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      width: var(--container-width);
-      animation: fadeIn 0.5s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h1 {
-      font-size: var(--heading-size);
-      font-weight: 900;
-      background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: clamp(0.5rem, 2vw, 1rem);
-      line-height: 1;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    .image {
-      margin: clamp(1rem, 4vw, 2rem) 0;
-      position: relative;
-      display: inline-block;
-    }
-
-    .image::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: clamp(10px, 2vw, 20px);
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
-      border-radius: 50%;
-    }
-
-    .image img {
-      width: var(--image-size);
-      height: var(--image-size);
-      object-fit: cover;
-      border-radius: clamp(10px, 3vw, 20px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .image img:hover {
-      transform: translateY(-5px);
-    }
-
-    p {
-      font-size: var(--text-size);
-      line-height: 1.6;
-      color: #636e72;
-      margin: clamp(1rem, 3vw, 1.5rem) 0;
-      animation: slideIn 0.5s ease-out 0.2s both;
-      padding: 0 clamp(0.5rem, 2vw, 1rem);
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    a {
-      display: inline-block;
-      text-decoration: none;
-      background: linear-gradient(45deg, #0984e3, #00cec9);
-      color: white;
-      padding: var(--button-padding);
-      border-radius: 50px;
-      font-size: var(--text-size);
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      white-space: nowrap;
-      touch-action: manipulation;
-    }
-
-    a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      background: linear-gradient(45deg, #00a8ff, #00b894);
-    }
-
-    /* Optimize for touch devices */
-    @media (hover: none) {
-      a:hover {
-        transform: none;
-      }
-      
-      .image img:hover {
-        transform: none;
-      }
-    }
-
-    /* For extremely small screens */
-    @media (max-width: 320px) {
-      .container {
-        padding: 0.8rem;
-      }
-      
-      p {
-        margin: 1rem 0;
-      }
-    }
-
-    /* Prevent layout shifts */
-    @media screen and (orientation: landscape) and (max-height: 500px) {
-      .container {
-        margin: 1rem 0;
-      }
-      
-      body {
-        align-items: flex-start;
-        overflow-y: auto;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-in': 'slideIn 0.5s ease-out 0.2s both',
+                        'pulse': 'pulse 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { 
+                                opacity: '0',
+                                transform: 'translateY(-20px)'
+                            },
+                            '100%': { 
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            },
+                        },
+                        slideIn: {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateX(-20px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateX(0)'
+                            },
+                        },
+                        pulse: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-  <div class="container">
-    <h1>404</h1>
-    <div class="image">
-      <img src="https://cloud-web-cms-beta.s3.cloud.cmctelecom.vn/avt_loi_server_thuong_gap_17c82e02be.png" alt="404 Illustration">
+<body class="font-sans min-h-screen bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] flex justify-center items-center p-4">
+    <div class="w-[90%] max-w-[600px] text-center p-4 md:p-8 bg-white/90 rounded-lg md:rounded-2xl shadow-lg backdrop-blur-lg border border-white/20 animate-fade-in">
+        <h1 class="text-[clamp(4rem,15vw,120px)] font-black leading-none mb-2 md:mb-4 bg-gradient-to-r from-[#ff6b6b] to-[#ff8e8e] bg-clip-text text-transparent animate-pulse">
+            404
+        </h1>
+        
+        <div class="relative inline-block my-4 md:my-8 group">
+            <img 
+                src="https://cloud-web-cms-beta.s3.cloud.cmctelecom.vn/avt_loi_server_thuong_gap_17c82e02be.png" 
+                alt="404 Illustration"
+                class="w-[clamp(180px,40vw,250px)] h-[clamp(180px,40vw,250px)] object-cover rounded-lg md:rounded-2xl shadow-lg transition-transform duration-300 hover:-translate-y-1"
+            />
+            <div class="absolute w-3/5 h-[clamp(10px,2vw,20px)] bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-radial-gradient opacity-20 rounded-full"></div>
+        </div>
+
+        <p class="text-[clamp(1rem,2vw,1.2rem)] leading-relaxed text-gray-600 my-4 md:my-6 px-2 md:px-4 animate-slide-in">
+            Ồ! Có vẻ như trang bạn đang tìm kiếm đã chuyển sang không gian mạng.
+        </p>
+
+        <a href="./HomePage.html" 
+           class="inline-block bg-gradient-to-r from-[#0984e3] to-[#00cec9] hover:from-[#00a8ff] hover:to-[#00b894] text-white px-[clamp(1.6rem,4vw,2rem)] py-[clamp(0.8rem,2vw,1rem)] rounded-full text-[clamp(1rem,2vw,1.2rem)] font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg shadow-md whitespace-nowrap">
+            Quay lại trang chủ
+        </a>
     </div>
-    <p>Ồ! Có vẻ như trang bạn đang tìm kiếm đã chuyển sang không gian mạng.</p>
-    <a href="./HomePage.html">Quay lại trang chủ</a>
-  </div>
+
+    <style>
+        .bg-radial-gradient {
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        @media (hover: none) {
+            a:hover {
+                transform: none;
+            }
+            
+            img:hover {
+                transform: none;
+            }
+        }
+
+        @media screen and (orientation: landscape) and (max-height: 500px) {
+            body {
+                align-items: flex-start;
+                overflow-y: auto;
+            }
+        }
+    </style>
 </body>
 </html>
